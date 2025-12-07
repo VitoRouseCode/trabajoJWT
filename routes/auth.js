@@ -14,18 +14,18 @@ router.post('/', async function(req, res) {
             return res.status(400).json({ message: 'Usuario no encontrado' });
         }
 
-        // 2. Validar la contraseña (comparar texto plano vs encriptada en BD)
+        // 2. Validar la contraseña 
         const esIgual = bcrypt.compareSync(req.body.password, usuario.password);
         if (!esIgual) {
             return res.status(400).json({ message: 'Contraseña incorrecta' });
         }
 
-        // 3. Generar el JWT (El "brazalete")
+        // 3. Generar el JWT 
         const payload = {
             id: usuario._id,
             nombre: usuario.nombre,
             email: usuario.email,
-            rol: usuario.rol // IMPORTANTE: Guardamos el rol en el token
+            rol: usuario.rol // IMPORTANTE: Guardamos el rol en el token ya que se necesita para validar rutas
         };
 
         const token = jwt.sign(payload, process.env.SECRET_KEY, {

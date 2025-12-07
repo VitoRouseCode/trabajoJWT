@@ -5,14 +5,14 @@ const { validarJWT, validarRolAdmin } = require('../middleware/validar-jwt'); //
 const router = Router();
 
 // --- RUTA 1: CREAR INVENTARIO (Solo Admin) ---
-// Fíjate en el segundo argumento: es un array de middlewares que se ejecutan en orden.
+// el segundo argumento: es un array de middlewares que se ejecutan en orden.
 // 1. validarJWT: ¿Tiene token válido?
 // 2. validarRolAdmin: ¿Es administrador?
 router.post('/', [validarJWT, validarRolAdmin], async function(req, res) {
     try {
         console.log("Intentando crear inventario...");
         
-        // Validación básica de campos (puedes agregar más validaciones aquí)
+        // Validación básica de campos
         if (!req.body.serial || !req.body.modelo) {
              return res.status(400).send('Faltan datos obligatorios');
         }

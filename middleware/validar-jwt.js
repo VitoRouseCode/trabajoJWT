@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken');
 
 const validarJWT = (req, res, next) => {
-    // CORRECCIÓN: Usamos 'let' en lugar de 'const' porque vamos a modificar la variable abajo
+  
     let token = req.header('Authorization');
 
     if (!token) {
@@ -11,15 +11,14 @@ const validarJWT = (req, res, next) => {
     // --- LIMPIEZA DEL TOKEN ---
     // Si el token viene con la palabra "Bearer " al inicio, la quitamos.
     if (token.startsWith('Bearer ')) {
-        // Como ahora es 'let', Javascript nos permite sobrescribir la variable
+    //sobrescribir la variable
         token = token.slice(7, token.length); 
-        console.log("Token limpio:", token); // Log para verificar
     }
 
     try {
         // 2. Verificamos la firma usando nuestra palabra secreta
         // Si el token fue modificado o expiró, esta línea lanza un error (catch)
-        // OJO: Asegúrate de que process.env.SECRET_KEY tenga valor
+        // process.env.SECRET_KEY debe tener un valor
         const payload = jwt.verify(token, process.env.SECRET_KEY);
         
         console.log("Payload decodificado:", payload);

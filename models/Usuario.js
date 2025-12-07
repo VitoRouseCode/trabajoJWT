@@ -19,12 +19,12 @@ const UsuarioSchema = mongoose.Schema({
     password: {
         type: String,
         required: true
-        // Aquí se guardará el HASH (ej: $2a$10$....), nunca la clave real
+        // Aquí se guardará el HASH
     },
     rol: {
         type: String,
         required: true,
-        enum: ['administrador', 'docente'] // OJO: Si mandas otro rol, fallará
+        enum: ['administrador', 'docente'] // OJO: Si se envia otro rol, fallará, estos son los unicos dos roles disponibles
     },
     fechaCreacion: {
         type: Date,

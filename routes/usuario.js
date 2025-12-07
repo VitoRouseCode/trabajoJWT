@@ -23,7 +23,7 @@ router.post('/', async function(req, res) {
         usuario.rol = req.body.rol; // 'administrador' o 'docente'
 
         // 3. ENCRIPTAR LA CONTRASEÑA (Paso crítico de seguridad)
-        const salt = bcrypt.genSaltSync(); // Genera un "condimento" aleatorio
+        const salt = bcrypt.genSaltSync(); 
         const password = req.body.password; 
         usuario.password = bcrypt.hashSync(password, salt); // Encripta
 
