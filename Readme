@@ -33,7 +33,7 @@ El objetivo principal es cumplir con los requerimientos del Caso de Estudio 3, d
 
 ---
 
-## 🧪 Guía de Pruebas (Paso a Paso para el Evaluador)
+## 🧪 Guía de Pruebas 
 
 Para verificar la lógica de negocio, se sugiere seguir este flujo secuencial en **Postman**:
 
@@ -105,7 +105,7 @@ Aquí validamos la regla de negocio principal: *"El Docente solo visualiza, el A
 
 ---
 
-## 🛠️ Arquitectura de Seguridad (Resumen Técnico)
+## 🛠️ Arquitectura de Seguridad
 
 El proyecto utiliza una arquitectura de **Middlewares en cascada** en Express:
 
